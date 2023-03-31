@@ -1,38 +1,104 @@
-.App {
-  text-align: center;
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body {
+	width: 100%;
+	background-color: #eee;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.member-info-wrapper {
+	max-width: 1020px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 0 20px;
+}
+.welcome-block {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+.photo-container {
+	max-width: 600px;
+	width: 95%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.hello-text {
+	position: absolute;
+	font-size: 13rem;
+	color: #333;
+	top: -40px;
+	z-index: 0;
+}
+.name-text {
+	font-size: 1.5rem;
+	position: absolute;
+	top: 10.5rem;
+	left: 30rem
+}
+.member-info-wrapper img {
+	width: 100%;
+	position: relative;
+	z-index: 1;
+}
+.skills-container {
+	position: relative;
+	top: 15rem;
+	width: 320px;
+}
+.about-container {
+	font-size: 1.2rem;
+	width: 100%;
+
+}
+@media screen and (max-width: 1024px) {
+	.hello-text {
+		font-size: 11rem;
+	}
+	.name-text {
+		font-size: 1.5rem;
+		margin-top: -20px;
+	}
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@media only  screen and (max-width: 920px) {
+	.hello-text, .name-text {
+		position: static;
+		top: 0;
+		left: 0;
+	}
+	.hello-text {
+		font-size: 6.2rem;
+	}
+	.name-text {
+		font-size: 1.4rem;
+		margin-top: -10px;
+	}
+	.skills-container {
+		top: 0;
+	}
+	.member-info-wrapper img {
+		margin-top: -30px;
+	}
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media only  screen and (max-width: 400px) {
+	.hello-text {
+		font-size: 4.5rem;
+	}
+	.name-text {
+		font-size: 1rem;
+		margin-top: -10px;
+	}
 }
