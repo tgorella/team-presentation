@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import FavouritePage from './pages/FavouritePage';
-import MemberInfoPage from './pages/MemeberInfoPage';
+import MemberInfoPage from './pages/MemberInfoPage';
 import NavBar from './components/NavBar';
 import MembersProvider from './hooks/useMember';
 
