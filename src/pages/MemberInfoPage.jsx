@@ -33,7 +33,7 @@ console.log(currentMember)
 			</div>
 			<div className="skills-container">
 				<h2>Статы:</h2>
-				<ProgressBar label="Возраст" number="37" color="green" />
+				<ProgressBar label="Возраст" number={currentMember.age} color="green" />
 				{currentMember.skills.map(skill => {
 					return <ProgressBar label={skill.label} number={skill.number} color={skill.color} key={skill.label}/>
 				})}
