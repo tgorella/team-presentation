@@ -24,9 +24,9 @@ const BreadCrumbs = () => {
           case "member":
             name = "Информация о команде";
             break;
-						case "features":
-							name = "Компоненты";
-							break;
+          case "features":
+            name = "Компоненты";
+            break;
         }
         if (index === links.length - 1)
           return (

@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useMember } from "../hooks/useMember";
 import TG_IMG from "../assets/tatiana-gorelova.webp";
 import ProgressBar from "../components/ProgressBar";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Bage from "../components/Bage";
+import Button from "../components/Button";
 const MemberInfoPage = () => {
   const { id } = useParams();
   const { members } = useMember();
+  const [innerText, setInnerText] = useState("Some text here");
+  const handleClick = () => {
+    if (innerText === "Some text here") {
+      setInnerText("I'm working");
+    } else {
+      setInnerText("Some text here");
+    }
+  };
   const currentMember = members.find((member) => member.id === id);
   if (!currentMember) {
     return (
@@ -27,6 +36,18 @@ const MemberInfoPage = () => {
     }
     if (name === "Progress Bar") {
       return <ProgressBar label="Some text" number="62" color="orange" />;
+    }
+    if (name === "Button") {
+      return (
+        <>
+          <Button
+            func={handleClick}
+            color="orange"
+            label={innerText}
+            type="round"
+          />
+        </>
+      );
     }
   };
 

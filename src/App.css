@@ -79,7 +79,8 @@ h3 {
 	border-radius: 16px;
 }
 .about-container {
-	font-size: 1rem;
+	font-size: 1.2rem;
+	line-height: 1.5;
 	width: 100%;
 
 }
@@ -112,6 +113,20 @@ overflow: hidden;
 	border-radius: 16px;
 
 }
+button {
+	border: none;
+	padding: 20px 25px;
+	font-size: 1rem;
+	cursor: pointer;
+	font-weight: 600;
+}
+.round {
+	border-radius: 32px;
+}
+button .square {
+	border-radius: 0;
+}
+
 @media screen and (max-width: 1024px) {
 	.hello-text {
 		font-size: 11rem;
