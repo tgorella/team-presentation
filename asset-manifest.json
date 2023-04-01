@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/team-presentation/static/css/main.7ef02b2f.css",
-    "main.js": "/team-presentation/static/js/main.91f05164.js",
+    "main.js": "/team-presentation/static/js/main.a14f985e.js",
     "static/media/tatiana-gorelova.webp": "/team-presentation/static/media/tatiana-gorelova.1d4145989174e1d47fc5.webp",
     "index.html": "/team-presentation/index.html",
     "main.7ef02b2f.css.map": "/team-presentation/static/css/main.7ef02b2f.css.map",
-    "main.91f05164.js.map": "/team-presentation/static/js/main.91f05164.js.map"
+    "main.a14f985e.js.map": "/team-presentation/static/js/main.a14f985e.js.map"
   },
   "entrypoints": [
     "static/css/main.7ef02b2f.css",
-    "static/js/main.91f05164.js"
+    "static/js/main.a14f985e.js"
   ]
 }
