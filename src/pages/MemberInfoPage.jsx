@@ -4,20 +4,33 @@ import { useMember } from "../hooks/useMember";
 import TG_IMG from "../assets/tatiana-gorelova.webp";
 import ProgressBar from "../components/ProgressBar";
 import BreadCrumbs from "../components/BreadCrumbs";
+import Bage from "../components/Bage";
 const MemberInfoPage = () => {
   const { id } = useParams();
   const { members } = useMember();
   const currentMember = members.find((member) => member.id === id);
   if (!currentMember) {
     return (
-      <div className="member-info-wrapper" style={{justifyContent: "center", height: "100vh"}}>
+      <div
+        className="member-info-wrapper"
+        style={{ justifyContent: "center", height: "100vh" }}>
         <h1>Такого пользователя не существует</h1>
       </div>
     );
   }
+  const element = (name) => {
+    if (name === "Bread Crumbs") {
+      return <BreadCrumbs />;
+    }
+    if (name === "Bage") {
+      return <Bage content="Some text here" color="orange" />;
+    }
+    if (name === "Progress Bar") {
+      return <ProgressBar label="Some text" number="62" color="orange" />;
+    }
+  };
 
   let imageUrl = "";
-  console.log(currentMember);
   switch (currentMember.id) {
     case "tatiana":
       imageUrl = TG_IMG;
@@ -57,22 +70,21 @@ const MemberInfoPage = () => {
           </div>
         </div>
         <div className="about-container">
-          <h2
-            style={{
-              marginBottom: "30px",
-              fontSize: "2rem",
-              textTransform: "uppercase",
-            }}>
-            Обо мне
-          </h2>
-          <p>
-            I am 37 years old. I have a passion for coding and enjoy spending my
-            free time learning new programming languages and working on personal
-            projects. In addition to coding, I am also an avid photographer. I
-            love capturing beautiful moments and turning them into lasting
-            memories. Whether it's landscapes, portraits, or anything in
-            between, photography is a creative outlet that I truly enjoy.
-          </p>
+          <div>
+            <h2>Обо мне</h2>
+            {currentMember.about}
+          </div>
+          <div>
+            <h2>Компоненты, выполненные мною</h2>
+            {currentMember.components.map((component) => {
+              return (
+                <div key={component.name} className="components-wrapper">
+                  <h3>{component.name}</h3>
+                  {element(component.name)}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>

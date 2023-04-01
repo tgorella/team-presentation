@@ -11,7 +11,7 @@ const BreadCrumbs = () => {
         position: "relative",
         zIndex: "100",
         fontSize: "1.3rem",
-        margin: "20px -20px",
+        margin: "20px 0",
         display: "inline",
       }}>
       <NavLink to="/">Home </NavLink>{" "}
@@ -24,6 +24,9 @@ const BreadCrumbs = () => {
           case "member":
             name = "Информация о команде";
             break;
+						case "features":
+							name = "Компоненты";
+							break;
         }
         if (index === links.length - 1)
           return (
