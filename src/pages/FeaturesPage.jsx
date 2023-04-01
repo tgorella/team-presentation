@@ -1,12 +1,12 @@
 import React from "react";
 import BreadCrumbs from "../components/BreadCrumbs";
-const FavouritePage = () => {
+const FeaturesPage = () => {
   return (
     <div className="member-info-wrapper">
-			<BreadCrumbs />
-      <h1>Favourite Page</h1>
+      <BreadCrumbs />
+      <h1>Компоненты</h1>
     </div>
   );
 };
 
-export default FavouritePage;
+export default FeaturesPage;

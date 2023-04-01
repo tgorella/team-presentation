@@ -5,6 +5,7 @@ import FavouritePage from './pages/FavouritePage';
 import MemberInfoPage from './pages/MemberInfoPage';
 import NavBar from './components/NavBar';
 import MembersProvider from './hooks/useMember';
+import FeaturesPage from './pages/FeaturesPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
 		<Routes>
 			<Route path="/" element={<MainPage />} />
 			<Route path="/favourite" element={<FavouritePage />} />
+			<Route path="/features" element={<FeaturesPage />} />
 			<Route path="member/:id" element={<MemberInfoPage />} />
 			<Route path="/*" element={<MainPage />} />
 		</Routes>
