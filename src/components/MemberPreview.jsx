@@ -11,7 +11,9 @@ const MemberPreview = ({ member, toggleFavourite }) => {
 	const {favourite} = useFavs();
   const [isFav, setFav] = useState(favourite.includes(member.id));
 const handleClick = (id) => {
-	toggleFavourite(id, isFav)
+	if (toggleFavourite) {
+		toggleFavourite(id, isFav)
+	}
 	setFav(!isFav)
 }
   let imageUrl = "";
@@ -33,7 +35,7 @@ const handleClick = (id) => {
 
   return (
     <div className="preview-card">
-      <button
+     {toggleFavourite && <button
         className="preview-card-btn"
         style={{ fontSize: "50px", color: "red", cursor: "pointer" }}
         title="Удалить из избранного"
@@ -43,7 +45,7 @@ const handleClick = (id) => {
         ) : (
           <i className="bi bi-balloon-heart"></i>
         )}
-      </button>
+      </button>}
       <img src={imageUrl} alt={member.name} />
       <div
         style={{ marginBottom: "20px", fontSize: "24px", fontWeight: "bold" }}>
@@ -75,5 +77,5 @@ const handleClick = (id) => {
 export default MemberPreview;
 MemberPreview.propTypes = {
   member: PropTypes.object.isRequired,
-	toggleFavourite: PropTypes.func.isRequired
+	toggleFavourite: PropTypes.func
 };

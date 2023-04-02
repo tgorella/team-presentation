@@ -62,6 +62,8 @@ console.log("click")
 			<div className="components-wrapper">
         <h3>Карточка участника команды</h3>
         <MemberPreview key={currentMember.id} member={currentMember} toggleFavourite={toggleFavourite} />
+				<p>Вариант без добавления в избранное. Просто не передаем пропс toggleFavourite</p>
+				<MemberPreview key={currentMember.id} member={currentMember} />
       </div>
     </div>
   );
