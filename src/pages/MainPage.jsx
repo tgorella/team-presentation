@@ -3,7 +3,6 @@ import MemberPreview from '../components/MemberPreview';
 import { useMember } from '../hooks/useMember';
 const MainPage = () => {
 	const { members } = useMember();
-	console.log(members)
 
 	return (
 	<div className="main-page">

@@ -27,6 +27,8 @@ const BreadCrumbs = () => {
           case "features":
             name = "Компоненты";
             break;
+				default:
+        break;
         }
         if (index === links.length - 1)
           return (
@@ -42,6 +44,7 @@ const BreadCrumbs = () => {
             </p>
           );
         }
+				return ""
       })}
     </div>
   );

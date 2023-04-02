@@ -7,6 +7,9 @@ import ProgressBar from "../components/ProgressBar";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Bage from "../components/Bage";
 import Button from "../components/Button";
+import NavBar from "../components/NavBar";
+import MemberPreview from '../components/MemberPreview';
+
 const MemberInfoPage = () => {
 	const { id } = useParams();
   const { members } = useMember();
@@ -86,6 +89,16 @@ setFav(!isFav)
         </>
       );
     }
+		if (name === "Navbar") {
+			return (<>
+			<NavBar />
+			</>)
+		}
+		if (name === "user card") {
+			return (<>
+			<MemberPreview key={currentMember.id} member={currentMember} />
+			</>)
+		}
   };
 
   let imageUrl = "";
