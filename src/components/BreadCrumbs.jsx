@@ -14,7 +14,7 @@ const BreadCrumbs = () => {
         margin: "20px 0",
         display: "inline",
       }}>
-      <NavLink to="/">Home </NavLink>{" "}
+      <NavLink to="/">Главная </NavLink>{" "}
       {links.map((link, index) => {
         let name;
         switch (link) {

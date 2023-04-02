@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 const Button = ({ func, color, label, type }) => {
   return (
-    <button onClick={func} style={{ backgroundColor: color }} className={type}>
+    <button onClick={func} style={{ backgroundColor: color, color: "#fff" }} className={type}>
       {label}
     </button>
   );

@@ -58,8 +58,9 @@ h3 {
 	top: 10rem;
 	left: 30.5rem
 }
-.member-info-wrapper img {
+.member-image {
 	width: 100%;
+	min-height: 300px;
 	position: relative;
 	z-index: 1;
 }
@@ -126,7 +127,21 @@ button {
 button .square {
 	border-radius: 0;
 }
-
+.fav-button {
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	width: 70px;
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 40px;
+	/* background-color: pink; */
+	border-radius: 50%;
+	cursor: pointer;
+	color: red;
+}
 @media screen and (max-width: 1024px) {
 	.hello-text {
 		font-size: 11rem;
@@ -166,7 +181,7 @@ button .square {
 	.member-info-wrapper {
 		width: 100%;
 	}
-	.member-info-wrapper img {
+	.member-image {
 		margin-top: -20px;
 	}
 }
