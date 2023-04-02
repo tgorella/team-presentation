@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useMember } from "../hooks/useMember";
 import TG_IMG from "../assets/tatiana-gorelova.webp";
 import ProgressBar from "../components/ProgressBar";
@@ -105,6 +105,10 @@ const MemberInfoPage = () => {
                 </div>
               );
             })}
+          </div>
+					<div>
+            <h2>Контакты</h2>
+            {currentMember.github && <div><NavLink to={"https://github.com/"+currentMember.github}><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" style={{width: "150px"}}/></NavLink></div>}
           </div>
         </div>
       </div>
