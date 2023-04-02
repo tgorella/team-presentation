@@ -18,6 +18,9 @@ const FeaturesPage = () => {
       setInnerText("Some text here");
     }
   };
+	const toggleFavourite = () => {
+console.log("click")
+	}
   return (
     <div className="member-info-wrapper">
       <BreadCrumbs />
@@ -58,7 +61,7 @@ const FeaturesPage = () => {
       </div>
 			<div className="components-wrapper">
         <h3>Карточка участника команды</h3>
-        <MemberPreview key={currentMember.id} member={currentMember} />
+        <MemberPreview key={currentMember.id} member={currentMember} toggleFavourite={toggleFavourite} />
       </div>
     </div>
   );

@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import { NavLink } from "react-router-dom";
 import TG_IMG from "../assets/tatiana-gorelova.webp";
 import DB_IMG from "../assets/daria-brusnitsina.webp";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useFavs } from "../hooks/useFavs";
 
-const MemberPreview = ({ member }) => {
-  const [favourite, setFavourite] = useState(
-    JSON.parse(localStorage.getItem("fav-members"))
-  );
-  const [isFav, setFav] = useState(
-    favourite.some((item) => item === member.id)
-  );
+const MemberPreview = ({ member, toggleFavourite }) => {
+	const {favourite} = useFavs();
+  const [isFav, setFav] = useState(favourite.includes(member.id));
+const handleClick = (id) => {
+	toggleFavourite(id, isFav)
+	setFav(!isFav)
+}
   let imageUrl = "";
   switch (member.id) {
     case "tatiana":
@@ -29,27 +30,14 @@ const MemberPreview = ({ member }) => {
   function redirect(path) {
     navigate(path);
   }
-  const toggleFavourite = () => {
-    if (isFav === false) {
-      favourite.push(member.id);
-      localStorage.setItem("fav-members", JSON.stringify(favourite));
-    }
-    if (isFav === true) {
-      localStorage.setItem(
-        "fav-members",
-        JSON.stringify(favourite.filter((i) => i !== member.id))
-      );
-      setFavourite(favourite.filter((i) => i !== member.id));
-    }
-    setFav(!isFav);
-  };
+
   return (
     <div className="preview-card">
       <button
         className="preview-card-btn"
         style={{ fontSize: "50px", color: "red", cursor: "pointer" }}
         title="Удалить из избранного"
-        onClick={toggleFavourite}>
+        onClick={() => handleClick(member.id, isFav)}>
         {isFav ? (
           <i className="bi bi-balloon-heart-fill"></i>
         ) : (
@@ -57,7 +45,8 @@ const MemberPreview = ({ member }) => {
         )}
       </button>
       <img src={imageUrl} alt={member.name} />
-      <div style={{marginBottom: "20px", fontSize: "24px", fontWeight: "bold",}}>
+      <div
+        style={{ marginBottom: "20px", fontSize: "24px", fontWeight: "bold" }}>
         {member.name}
         <span> </span>
         <NavLink to={"https://github.com/" + member.github}>
@@ -86,4 +75,5 @@ const MemberPreview = ({ member }) => {
 export default MemberPreview;
 MemberPreview.propTypes = {
   member: PropTypes.object.isRequired,
+	toggleFavourite: PropTypes.func.isRequired
 };

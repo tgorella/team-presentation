@@ -9,20 +9,21 @@ import Bage from "../components/Bage";
 import Button from "../components/Button";
 import NavBar from "../components/NavBar";
 import MemberPreview from "../components/MemberPreview";
+import { useFavs } from "../hooks/useFavs";
 
 const MemberInfoPage = () => {
   const { id } = useParams();
   const { members } = useMember();
   const currentMember = members.find((member) => member.id === id);
-  if (!localStorage.getItem("fav-members")) {
-    localStorage.setItem("fav-members", JSON.stringify([]));
-  }
-  const [favourite, setFavourite] = useState(
-    JSON.parse(localStorage.getItem("fav-members"))
-  );
-  const [isFav, setFav] = useState(
-    favourite.some((item) => item === currentMember.id)
-  );
+	const {favourite, toggleFavourite} = useFavs();
+	const [isFav, setFav] = useState(favourite.includes(currentMember.id));
+  const handleFavClick = (id) => {
+		toggleFavourite(id, isFav)
+		setFav(!isFav)
+	}
+	const fakeFunc = () => {
+		console.log("click")
+	}
   const [innerText, setInnerText] = useState("Some text here");
   if (!currentMember) {
     return (
@@ -33,20 +34,7 @@ const MemberInfoPage = () => {
       </div>
     );
   }
-  const toggleFavourite = () => {
-    if (isFav === false) {
-      favourite.push(currentMember.id);
-      localStorage.setItem("fav-members", JSON.stringify(favourite));
-    }
-    if (isFav === true) {
-      localStorage.setItem(
-        "fav-members",
-        JSON.stringify(favourite.filter((i) => i !== currentMember.id))
-      );
-      setFavourite(favourite.filter((i) => i !== currentMember.id));
-    }
-    setFav(!isFav);
-  };
+
   const handleClick = () => {
     if (innerText === "Some text here") {
       setInnerText("I'm working");
@@ -104,7 +92,7 @@ const MemberInfoPage = () => {
     if (name === "user card") {
       return (
         <>
-          <MemberPreview key={currentMember.id} member={currentMember} />
+          <MemberPreview key={currentMember.id} member={currentMember} toggleFavourite={fakeFunc}/>
         </>
       );
     }
@@ -187,7 +175,7 @@ const MemberInfoPage = () => {
           </div>
         </div>
       </div>
-      <div className="fav-button" onClick={toggleFavourite}>
+      <div className="fav-button" onClick={() => handleFavClick(currentMember.id)}>
         {isFav ? (
           <i className="bi bi-balloon-heart-fill"></i>
         ) : (

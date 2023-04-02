@@ -23,6 +23,12 @@ body,
   align-items: center;
   color: var(--text-color);
 }
+#root {
+	background-image: url("./assets/blob-2.png");
+	background-position: bottom right;
+	background-size: 400px;
+	background-repeat: no-repeat;
+}
 h2 {
   margin-bottom: 20px;
   margin-top: 20px;
@@ -62,6 +68,7 @@ nav {
   max-width: 100%;
   font-weight: 500;
   display: flex;
+	flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   text-transform: uppercase;
@@ -69,9 +76,11 @@ nav {
 
 .navigation__menu {
   display: flex;
-  column-gap: 3rem;
+	flex-wrap: wrap;
 }
-
+.navigation__menu a {
+	margin-right: 3rem;
+}
 /* MAIN PAGE */
 .main-page-title {
   font-size: 50px;
@@ -92,7 +101,8 @@ nav {
 .main-page-row {
   margin-top: 50px;
   display: flex;
-  column-gap: 10rem;
+	flex-wrap: wrap;
+  column-gap: 2rem;
 }
 
 .main-page-row::after {
@@ -108,17 +118,18 @@ nav {
   background-size: cover;
 }
 
-.main-page-row::before {
-  position: absolute;
-  background-image: url("./assets/blob-2.png");
-  content: "";
+.main-page-row {
+  /* position: absolute; */
+  /* background-image: url("./assets/blob-2.png");
+	background-position: bottom right; */
+  /* content: "";
   z-index: -12;
   width: 400px;
   height: 400px;
   left: 150px;
   top: 350px;
   position: absolute;
-  background-size: cover;
+  background-size: cover; */
 }
 
 /* PREVIEW */
@@ -134,7 +145,8 @@ nav {
   margin: 10px;
 }
 .preview-card img {
-  max-width: 400px;
+  width: 400px;
+	max-width: 100%;
 }
 .preview-card h3 {
   /* font-family: 'Yeseva One', cursive; */
