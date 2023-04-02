@@ -1,14 +1,17 @@
 {
   "files": {
-    "main.css": "/team-presentation/static/css/main.7ef02b2f.css",
-    "main.js": "/team-presentation/static/js/main.a14f985e.js",
-    "static/media/tatiana-gorelova.webp": "/team-presentation/static/media/tatiana-gorelova.1d4145989174e1d47fc5.webp",
+    "main.css": "/team-presentation/static/css/main.158c198b.css",
+    "main.js": "/team-presentation/static/js/main.7a71ab5b.js",
+    "static/media/blob-1.png": "/team-presentation/static/media/blob-1.84158ec9381254ac032a.png",
+    "static/media/blob-2.png": "/team-presentation/static/media/blob-2.4d3e4e6e90b6781bf067.png",
+    "static/media/tatiana-gorelova.webp": "/team-presentation/static/media/tatiana-gorelova.f3eb9b5b7cbf8349ff2d.webp",
+    "static/media/daria-brusnitsina.webp": "/team-presentation/static/media/daria-brusnitsina.50b2fed98f3cefc45e7c.webp",
     "index.html": "/team-presentation/index.html",
-    "main.7ef02b2f.css.map": "/team-presentation/static/css/main.7ef02b2f.css.map",
-    "main.a14f985e.js.map": "/team-presentation/static/js/main.a14f985e.js.map"
+    "main.158c198b.css.map": "/team-presentation/static/css/main.158c198b.css.map",
+    "main.7a71ab5b.js.map": "/team-presentation/static/js/main.7a71ab5b.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ef02b2f.css",
-    "static/js/main.a14f985e.js"
+    "static/css/main.158c198b.css",
+    "static/js/main.7a71ab5b.js"
   ]
 }
