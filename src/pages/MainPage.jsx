@@ -4,9 +4,6 @@ import { useMember } from "../hooks/useMember";
 import { useFavs } from "../hooks/useFavs";
 const MainPage = () => {
   const { members } = useMember();
-  // if (!localStorage.getItem("fav-members")) {
-  //   localStorage.setItem("fav-members", JSON.stringify([]));
-  // }
   const { toggleFavourite } = useFavs();
 
   return (

@@ -10,20 +10,21 @@ import Button from "../components/Button";
 import NavBar from "../components/NavBar";
 import MemberPreview from "../components/MemberPreview";
 import { useFavs } from "../hooks/useFavs";
+import ComponentBox from "../components/ui/ComponentBox";
 
 const MemberInfoPage = () => {
   const { id } = useParams();
   const { members } = useMember();
   const currentMember = members.find((member) => member.id === id);
-	const {favourite, toggleFavourite} = useFavs();
-	const [isFav, setFav] = useState(favourite.includes(currentMember.id));
+  const { favourite, toggleFavourite } = useFavs();
+  const [isFav, setFav] = useState(favourite.includes(currentMember.id));
   const handleFavClick = (id) => {
-		toggleFavourite(id, isFav)
-		setFav(!isFav)
-	}
-	const fakeFunc = () => {
-		console.log("click")
-	}
+    toggleFavourite(id, isFav);
+    setFav(!isFav);
+  };
+  const fakeFunc = () => {
+    console.log("click");
+  };
   const [innerText, setInnerText] = useState("Some text here");
   if (!currentMember) {
     return (
@@ -92,7 +93,11 @@ const MemberInfoPage = () => {
     if (name === "user card") {
       return (
         <>
-          <MemberPreview key={currentMember.id} member={currentMember} toggleFavourite={fakeFunc}/>
+          <MemberPreview
+            key={currentMember.id}
+            member={currentMember}
+            toggleFavourite={fakeFunc}
+          />
         </>
       );
     }
@@ -152,10 +157,10 @@ const MemberInfoPage = () => {
             <h2>Компоненты, выполненные мною</h2>
             {currentMember.components?.map((component) => {
               return (
-                <div key={component.name} className="components-wrapper">
+                <ComponentBox key={component.name}>
                   <h3>{component.name}</h3>
                   {element(component.name)}
-                </div>
+                </ComponentBox>
               );
             })}
           </div>
@@ -175,7 +180,9 @@ const MemberInfoPage = () => {
           </div>
         </div>
       </div>
-      <div className="fav-button" onClick={() => handleFavClick(currentMember.id)}>
+      <div
+        className="fav-button"
+        onClick={() => handleFavClick(currentMember.id)}>
         {isFav ? (
           <i className="bi bi-balloon-heart-fill"></i>
         ) : (
