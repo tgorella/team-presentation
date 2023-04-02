@@ -6,8 +6,7 @@ import { useMember } from '../hooks/useMember';
 const FavouritePage = () => {
 	const favourite = JSON.parse(localStorage.getItem("fav-members"))
 	const { members } = useMember();
-
-	if (!favourite || favourite === []) {
+	if (!favourite || favourite.length === 0) {
 		return (
 			<div className="member-info-wrapper">
 				<BreadCrumbs />
@@ -25,7 +24,7 @@ const favMembers = favourite.map((i) => {
     <div className="member-info-wrapper">
 			<BreadCrumbs />
       <h1>Избранное</h1>
-			<div>
+			<div style={{display: "flex", flexWrap: "wrap", }}>
 			{ favMembers.map((m) => {
 				return (<MemberPreview key={m.id} member={m} />)
 			})}

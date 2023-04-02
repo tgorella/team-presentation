@@ -3,7 +3,13 @@ import BreadCrumbs from "../components/BreadCrumbs";
 import Bage from "../components/Bage";
 import ProgressBar from "../components/ProgressBar";
 import Button from "../components/Button";
+import NavBar from "../components/NavBar";
+import MemberPreview from '../components/MemberPreview';
+import { useMember } from "../hooks/useMember";
+
 const FeaturesPage = () => {
+	const { members } = useMember();
+	const currentMember = members[0]
   const [innerText, setInnerText] = useState("Some text here");
   const handleClick = () => {
     if (innerText === "Some text here") {
@@ -45,6 +51,14 @@ const FeaturesPage = () => {
         <Bage content='color="orange"' color="orange" />{" "}
         <Bage content='color="#F85D93"' color="#F85D93" />{" "}
         <Bage content='color="#00bcd4' color="#00bcd4" />
+      </div>
+			<div className="components-wrapper">
+        <h3>Меню</h3>
+        <NavBar />
+      </div>
+			<div className="components-wrapper">
+        <h3>Карточка участника команды</h3>
+        <MemberPreview key={currentMember.id} member={currentMember} />
       </div>
     </div>
   );

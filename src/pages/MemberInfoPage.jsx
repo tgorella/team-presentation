@@ -8,19 +8,23 @@ import BreadCrumbs from "../components/BreadCrumbs";
 import Bage from "../components/Bage";
 import Button from "../components/Button";
 import NavBar from "../components/NavBar";
-import MemberPreview from '../components/MemberPreview';
+import MemberPreview from "../components/MemberPreview";
 
 const MemberInfoPage = () => {
-	const { id } = useParams();
+  const { id } = useParams();
   const { members } = useMember();
-	const currentMember = members.find((member) => member.id === id);
-	if (!localStorage.getItem("fav-members")) {
-		localStorage.setItem("fav-members", JSON.stringify([]))
-}
-	const [favourite, setFavourite] = useState(JSON.parse(localStorage.getItem("fav-members")))
-	const [isFav, setFav] = useState(favourite.some(item => item === currentMember.id))
+  const currentMember = members.find((member) => member.id === id);
+  if (!localStorage.getItem("fav-members")) {
+    localStorage.setItem("fav-members", JSON.stringify([]));
+  }
+  const [favourite, setFavourite] = useState(
+    JSON.parse(localStorage.getItem("fav-members"))
+  );
+  const [isFav, setFav] = useState(
+    favourite.some((item) => item === currentMember.id)
+  );
   const [innerText, setInnerText] = useState("Some text here");
-	if (!currentMember) {
+  if (!currentMember) {
     return (
       <div
         className="member-info-wrapper"
@@ -29,18 +33,20 @@ const MemberInfoPage = () => {
       </div>
     );
   }
-	const toggleFavourite = () => {
-		if (isFav === false) {
-			favourite.push(currentMember.id)
-			localStorage.setItem("fav-members", JSON.stringify(favourite))
-		}
-		if (isFav === true) {
-			localStorage.setItem("fav-members", JSON.stringify(favourite.filter((i) => i !== currentMember.id)))
-			setFavourite(favourite.filter((i) => i !== currentMember.id))
-		}
-
-setFav(!isFav)
-	}
+  const toggleFavourite = () => {
+    if (isFav === false) {
+      favourite.push(currentMember.id);
+      localStorage.setItem("fav-members", JSON.stringify(favourite));
+    }
+    if (isFav === true) {
+      localStorage.setItem(
+        "fav-members",
+        JSON.stringify(favourite.filter((i) => i !== currentMember.id))
+      );
+      setFavourite(favourite.filter((i) => i !== currentMember.id));
+    }
+    setFav(!isFav);
+  };
   const handleClick = () => {
     if (innerText === "Some text here") {
       setInnerText("I'm working");
@@ -59,7 +65,6 @@ setFav(!isFav)
           <Bage content="Some text here" color="orange" />{" "}
           <Bage content="Another text" color="#F85D93" />{" "}
           <Bage content="Another text" color="#00bcd4" />
-
         </>
       );
     }
@@ -89,16 +94,20 @@ setFav(!isFav)
         </>
       );
     }
-		if (name === "Navbar") {
-			return (<>
-			<NavBar />
-			</>)
-		}
-		if (name === "user card") {
-			return (<>
-			<MemberPreview key={currentMember.id} member={currentMember} />
-			</>)
-		}
+    if (name === "Navbar") {
+      return (
+        <>
+          <NavBar />
+        </>
+      );
+    }
+    if (name === "user card") {
+      return (
+        <>
+          <MemberPreview key={currentMember.id} member={currentMember} />
+        </>
+      );
+    }
   };
 
   let imageUrl = "";
@@ -106,9 +115,9 @@ setFav(!isFav)
     case "tatiana":
       imageUrl = TG_IMG;
       break;
-		case "daria":
-			imageUrl = DB_IMG;
-			break;
+    case "daria":
+      imageUrl = DB_IMG;
+      break;
     default:
       break;
   }
@@ -121,7 +130,11 @@ setFav(!isFav)
           <div className="photo-container">
             <div className="hello-text">ПРИВЕТ</div>
             <div className="name-text">меня зовут {currentMember.name}</div>
-            <img className="member-image" src={imageUrl} alt={currentMember.name} />
+            <img
+              className="member-image"
+              src={imageUrl}
+              alt={currentMember.name}
+            />
           </div>
           <div className="skills-container">
             <h2>Статы:</h2>
@@ -164,7 +177,7 @@ setFav(!isFav)
               <div>
                 <NavLink to={"https://github.com/" + currentMember.github}>
                   <img
-									alt={currentMember.name + " github"}
+                    alt={currentMember.name + " github"}
                     src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"
                     style={{ width: "150px" }}
                   />
@@ -174,7 +187,13 @@ setFav(!isFav)
           </div>
         </div>
       </div>
-			<div className="fav-button" onClick={toggleFavourite}>{isFav ? "♥" : "♡"}</div>
+      <div className="fav-button" onClick={toggleFavourite}>
+        {isFav ? (
+          <i className="bi bi-balloon-heart-fill"></i>
+        ) : (
+          <i className="bi bi-balloon-heart"></i>
+        )}
+      </div>
     </>
   );
 };
