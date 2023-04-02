@@ -2,23 +2,22 @@ import React, { useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { useMember } from "../hooks/useMember";
 import TG_IMG from "../assets/tatiana-gorelova.webp";
+import DB_IMG from "../assets/daria-brusnitsina.webp";
 import ProgressBar from "../components/ProgressBar";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Bage from "../components/Bage";
 import Button from "../components/Button";
 const MemberInfoPage = () => {
-  const { id } = useParams();
+	const { id } = useParams();
   const { members } = useMember();
+	const currentMember = members.find((member) => member.id === id);
+	if (!localStorage.getItem("fav-members")) {
+		localStorage.setItem("fav-members", JSON.stringify([]))
+}
+	const [favourite, setFavourite] = useState(JSON.parse(localStorage.getItem("fav-members")))
+	const [isFav, setFav] = useState(favourite.some(item => item === currentMember.id))
   const [innerText, setInnerText] = useState("Some text here");
-  const handleClick = () => {
-    if (innerText === "Some text here") {
-      setInnerText("I'm working");
-    } else {
-      setInnerText("Some text here");
-    }
-  };
-  const currentMember = members.find((member) => member.id === id);
-  if (!currentMember) {
+	if (!currentMember) {
     return (
       <div
         className="member-info-wrapper"
@@ -27,15 +26,47 @@ const MemberInfoPage = () => {
       </div>
     );
   }
+	const toggleFavourite = () => {
+		if (isFav === false) {
+			favourite.push(currentMember.id)
+			localStorage.setItem("fav-members", JSON.stringify(favourite))
+		}
+		if (isFav === true) {
+			localStorage.setItem("fav-members", JSON.stringify(favourite.filter((i) => i !== currentMember.id)))
+			setFavourite(favourite.filter((i) => i !== currentMember.id))
+		}
+
+setFav(!isFav)
+	}
+  const handleClick = () => {
+    if (innerText === "Some text here") {
+      setInnerText("I'm working");
+    } else {
+      setInnerText("Some text here");
+    }
+  };
+
   const element = (name) => {
     if (name === "Bread Crumbs") {
       return <BreadCrumbs />;
     }
     if (name === "Bage") {
-      return <Bage content="Some text here" color="orange" />;
+      return (
+        <>
+          <Bage content="Some text here" color="orange" />{" "}
+          <Bage content="Another text" color="#F85D93" />{" "}
+          <Bage content="Another text" color="#00bcd4" />
+
+        </>
+      );
     }
     if (name === "Progress Bar") {
-      return <ProgressBar label="Some text" number="62" color="orange" />;
+      return (
+        <>
+          <ProgressBar label="Some text" number="62" color="orange" />
+          <ProgressBar label="Another text" number="81" color="#F85D93" />
+        </>
+      );
     }
     if (name === "Button") {
       return (
@@ -45,6 +76,12 @@ const MemberInfoPage = () => {
             color="orange"
             label={innerText}
             type="round"
+          />{" "}
+          <Button
+            func={handleClick}
+            color="#F85D93"
+            label={innerText}
+            type="square"
           />
         </>
       );
@@ -56,7 +93,9 @@ const MemberInfoPage = () => {
     case "tatiana":
       imageUrl = TG_IMG;
       break;
-
+		case "daria":
+			imageUrl = DB_IMG;
+			break;
     default:
       break;
   }
@@ -69,7 +108,7 @@ const MemberInfoPage = () => {
           <div className="photo-container">
             <div className="hello-text">ПРИВЕТ</div>
             <div className="name-text">меня зовут {currentMember.name}</div>
-            <img src={imageUrl} alt={currentMember.name} />
+            <img className="member-image" src={imageUrl} alt={currentMember.name} />
           </div>
           <div className="skills-container">
             <h2>Статы:</h2>
@@ -97,7 +136,7 @@ const MemberInfoPage = () => {
           </div>
           <div>
             <h2>Компоненты, выполненные мною</h2>
-            {currentMember.components.map((component) => {
+            {currentMember.components?.map((component) => {
               return (
                 <div key={component.name} className="components-wrapper">
                   <h3>{component.name}</h3>
@@ -106,12 +145,23 @@ const MemberInfoPage = () => {
               );
             })}
           </div>
-					<div>
+          <div>
             <h2>Контакты</h2>
-            {currentMember.github && <div><NavLink to={"https://github.com/"+currentMember.github}><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" style={{width: "150px"}}/></NavLink></div>}
+            {currentMember.github && (
+              <div>
+                <NavLink to={"https://github.com/" + currentMember.github}>
+                  <img
+									alt={currentMember.name + " github"}
+                    src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"
+                    style={{ width: "150px" }}
+                  />
+                </NavLink>
+              </div>
+            )}
           </div>
         </div>
       </div>
+			<div className="fav-button" onClick={toggleFavourite}>{isFav ? "♥" : "♡"}</div>
     </>
   );
 };
