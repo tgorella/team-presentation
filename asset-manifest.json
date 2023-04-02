@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/team-presentation/static/css/main.4b186ff3.css",
-    "main.js": "/team-presentation/static/js/main.2c524fa7.js",
+    "main.css": "/team-presentation/static/css/main.53b7fbef.css",
+    "main.js": "/team-presentation/static/js/main.70a0e60a.js",
     "static/media/blob-1.png": "/team-presentation/static/media/blob-1.84158ec9381254ac032a.png",
     "static/media/blob-2.png": "/team-presentation/static/media/blob-2.4d3e4e6e90b6781bf067.png",
     "static/media/tatiana-gorelova.webp": "/team-presentation/static/media/tatiana-gorelova.f3eb9b5b7cbf8349ff2d.webp",
     "static/media/daria-brusnitsina.webp": "/team-presentation/static/media/daria-brusnitsina.50b2fed98f3cefc45e7c.webp",
     "index.html": "/team-presentation/index.html",
-    "main.4b186ff3.css.map": "/team-presentation/static/css/main.4b186ff3.css.map",
-    "main.2c524fa7.js.map": "/team-presentation/static/js/main.2c524fa7.js.map"
+    "main.53b7fbef.css.map": "/team-presentation/static/css/main.53b7fbef.css.map",
+    "main.70a0e60a.js.map": "/team-presentation/static/js/main.70a0e60a.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b186ff3.css",
-    "static/js/main.2c524fa7.js"
+    "static/css/main.53b7fbef.css",
+    "static/js/main.70a0e60a.js"
   ]
 }
