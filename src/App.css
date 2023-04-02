@@ -24,10 +24,10 @@ body,
   color: var(--text-color);
 }
 #root {
-	background-image: url("./assets/blob-2.png");
-	background-position: bottom right;
-	background-size: 400px;
-	background-repeat: no-repeat;
+  background-image: url("./assets/blob-2.png");
+  background-position: bottom right;
+  background-size: 400px;
+  background-repeat: no-repeat;
 }
 h2 {
   margin-bottom: 20px;
@@ -68,7 +68,7 @@ nav {
   max-width: 100%;
   font-weight: 500;
   display: flex;
-	flex-wrap: wrap;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   text-transform: uppercase;
@@ -76,10 +76,10 @@ nav {
 
 .navigation__menu {
   display: flex;
-	flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .navigation__menu a {
-	margin-right: 3rem;
+  margin-right: 3rem;
 }
 /* MAIN PAGE */
 .main-page-title {
@@ -101,7 +101,7 @@ nav {
 .main-page-row {
   margin-top: 50px;
   display: flex;
-	flex-wrap: wrap;
+  flex-wrap: wrap;
   column-gap: 2rem;
 }
 
@@ -118,20 +118,6 @@ nav {
   background-size: cover;
 }
 
-.main-page-row {
-  /* position: absolute; */
-  /* background-image: url("./assets/blob-2.png");
-	background-position: bottom right; */
-  /* content: "";
-  z-index: -12;
-  width: 400px;
-  height: 400px;
-  left: 150px;
-  top: 350px;
-  position: absolute;
-  background-size: cover; */
-}
-
 /* PREVIEW */
 .preview-card {
   position: relative;
@@ -146,7 +132,7 @@ nav {
 }
 .preview-card img {
   width: 400px;
-	max-width: 100%;
+  max-width: 100%;
 }
 .preview-card h3 {
   /* font-family: 'Yeseva One', cursive; */
@@ -155,6 +141,11 @@ nav {
   margin: 15px 0;
 }
 
+.preview-card-name {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
 .preview-card-btn {
   background: transparent;
   position: absolute;
@@ -263,6 +254,7 @@ button {
   font-size: 1rem;
   cursor: pointer;
   font-weight: 600;
+	margin-bottom: 10px;
 }
 .round {
   border-radius: 32px;
@@ -283,6 +275,16 @@ button .square {
   border-radius: 50%;
   cursor: pointer;
   color: red;
+	z-index: 10000;
+}
+.bage {
+  padding: 8px 15px;
+  color: #fff;
+  border-radius: 6px;
+  display: inline-block;
+	text-decoration: none;
+	font-weight: 700;
+	margin-bottom: 5px;
 }
 @media screen and (max-width: 1024px) {
   .hello-text {
@@ -350,4 +352,24 @@ button .square {
   .member-info-wrapper {
     width: 100%;
   }
+  .main-page {
+    padding: 0 20px;
+  }
+  .main-page h1 {
+    font-size: 2rem;
+  }
+  .components-wrapper {
+    padding: 20px;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .preview-card-name {
+    font-size: 16px;
+  }
+  .components-wrapper {
+    padding: 20px;
+  }
+	.preview-card {
+		margin: 10px 0;
+	}
 }

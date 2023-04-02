@@ -47,8 +47,7 @@ const handleClick = (id) => {
         )}
       </button>}
       <img src={imageUrl} alt={member.name} />
-      <div
-        style={{ marginBottom: "20px", fontSize: "24px", fontWeight: "bold" }}>
+      <div className="preview-card-name">
         {member.name}
         <span> </span>
         <NavLink to={"https://github.com/" + member.github}>

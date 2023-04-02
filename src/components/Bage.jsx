@@ -4,17 +4,12 @@ import PropTypes from "prop-types";
 const Bage = ({ color, content }) => {
   return (
 		<>
-    <span
+    <div className="bage"
       style={{
         backgroundColor: color,
-        padding: "8px 15px",
-        color: "#fff",
-        borderRadius: "6px",
-        textDecoration: "none",
-        fontWeight: "700",
       }}>
       {content}
-    </span>
+    </div>
 		</>
   );
 };
