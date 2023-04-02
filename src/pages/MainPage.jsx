@@ -1,13 +1,21 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import Bage from '../components/Bage';
+import MemberPreview from '../components/MemberPreview';
+import { useMember } from '../hooks/useMember';
 const MainPage = () => {
-	return ( <div className="member-info-wrapper">
-	<h1>Main Page</h1>
-	<NavLink to="member/tatiana">Индивидульная страница</NavLink>
-	<NavLink to="favourite">Избранное</NavLink>
-	<NavLink to="features">Компоненты</NavLink>
+	const { members } = useMember();
+	console.log(members)
 
+	return (
+	<div className="main-page">
+		<h1 className='main-page-title'>Наша команда</h1>
+		<div className="main-page-row">
+		{members.map((m) => {
+              return (
+				<MemberPreview key={m.id} member={m} />
+              );
+        })}
+
+		</div>
 	</div> );
 }
 
